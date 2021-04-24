@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { MessagesRepository } from "../repositories/MessagesRepository";
 import { MessagesService } from "../services/MessagesService";
  
 class MessagesController {
@@ -14,6 +15,17 @@ class MessagesController {
     });
 
     return response.json(message);
+  }
+
+  // localhost:3333/massages/idDoUsuario
+  async showByUser(request: Request, response: Response) {
+    const { id } = request.params;
+
+    const messagesService = new MessagesService();
+
+    const list = await messagesService.listByUser(id);
+
+    return response.json(list);
   }
 }
 

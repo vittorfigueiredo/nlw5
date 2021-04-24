@@ -14,7 +14,7 @@ class Message {
   @Column()
   text: string;
   
-  @JoinColumn({ name: "user_id "})
+  @JoinColumn({ name: "user_id"})
   @ManyToOne(() => User)
   user: User;
 
